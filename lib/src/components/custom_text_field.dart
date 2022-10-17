@@ -5,10 +5,16 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-          isDense: true,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(18))),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: TextFormField(
+        decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.email),
+            labelText: 'Email',
+            isDense: true,
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(18))),
+      ),
     );
   }
 }
