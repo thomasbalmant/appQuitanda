@@ -35,7 +35,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   //Senha
                   CustomTextField(
-                    isObscure: true,
+                    isSecret: true,
                     icon: Icons.lock,
                     label: 'Senha',
                   ),
