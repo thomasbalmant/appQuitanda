@@ -30,7 +30,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'grocer',
+                          text: 'grocery',
                           style: TextStyle(
                             color: Colors.red,
                           ),
@@ -46,6 +46,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     child: AnimatedTextKit(
                       repeatForever: true,
+                      pause: Duration.zero,
                       animatedTexts: [
                         FadeAnimatedText('Frutas'),
                         FadeAnimatedText('Verduras'),
