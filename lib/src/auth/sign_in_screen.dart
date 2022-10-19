@@ -113,10 +113,10 @@ class SignInScreen extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       'Esqueceu a senha?',
                       style: TextStyle(
-                        color: Colors.red,
+                        color: CustomColors.customContrastColor,
                       ),
                     ),
                   ),
