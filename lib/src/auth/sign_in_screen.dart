@@ -152,7 +152,8 @@ class SignInScreen extends StatelessWidget {
                   height: 50,
                   child: OutlinedButton(
                     onPressed: () {},
-                    child: Text(
+                    // ignore: sort_child_properties_last
+                    child: const Text(
                       'Criar Conta',
                       style: TextStyle(
                         fontSize: 18,
