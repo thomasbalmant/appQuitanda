@@ -17,13 +17,13 @@ class SignInScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //LOGOTIPO
-                const Text.rich(
+                Text.rich(
                   TextSpan(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 40,
                       ),
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: 'Green',
                           style: TextStyle(
                             color: Colors.white,
@@ -33,7 +33,7 @@ class SignInScreen extends StatelessWidget {
                         TextSpan(
                           text: 'grocery',
                           style: TextStyle(
-                            color: Colors.red,
+                            color: CustomColors.customContrastColor,
                           ),
                         ),
                       ]),
