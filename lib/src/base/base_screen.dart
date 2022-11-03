@@ -5,6 +5,16 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(
+        color: Colors.red,
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home_max_outlined), label: 'Home'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home_max_outlined), label: 'Home')
+      ]),
+    );
   }
 }
