@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 import '../config/custom_colors.dart';
@@ -35,15 +36,17 @@ class HomeTab extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
+          Badge(
+            badgeColor: CustomColors.customContrastColor,
+            badgeContent: const Text('2'),
+            child: Icon(
               Icons.shopping_cart,
               color: CustomColors.customSwatchColor,
             ),
           ),
         ],
       ),
+
       // Campo pesquisa
 
       // Categorias
