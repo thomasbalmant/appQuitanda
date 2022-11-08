@@ -6,15 +6,25 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // App bar
+      appBar: AppBar(
+        title: const Text.rich(
+          TextSpan(
+            style: TextStyle(
+              fontSize: 30,
+            ),
+            children: [
+              TextSpan(text: 'Green'),
+              TextSpan(text: 'grocer'),
+            ],
+          ),
+        ),
+      ),
+      // Campo pesquisa
 
-        // App bar
+      // Categorias
 
-        // Campo pesquisa
-
-        // Categorias
-
-        // Grid
-
-        );
+      // Grid
+    );
   }
 }
