@@ -36,10 +36,12 @@ class HomeTab extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.shopping_cart,
-              ))
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart,
+              color: CustomColors.customSwatchColor,
+            ),
+          ),
         ],
       ),
       // Campo pesquisa
