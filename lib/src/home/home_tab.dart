@@ -36,12 +36,24 @@ class HomeTab extends StatelessWidget {
           ),
         ),
         actions: [
-          Badge(
-            badgeColor: CustomColors.customContrastColor,
-            badgeContent: const Text('2'),
-            child: Icon(
-              Icons.shopping_cart,
-              color: CustomColors.customSwatchColor,
+          Padding(
+            padding: const EdgeInsets.only(top: 15, right: 15),
+            child: GestureDetector(
+              onTap: () {},
+              child: Badge(
+                badgeColor: CustomColors.customContrastColor,
+                badgeContent: const Text(
+                  '2',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                ),
+                child: Icon(
+                  Icons.shopping_cart,
+                  color: CustomColors.customSwatchColor,
+                ),
+              ),
             ),
           ),
         ],
