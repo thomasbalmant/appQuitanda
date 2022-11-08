@@ -10,6 +10,8 @@ class HomeTab extends StatelessWidget {
     return Scaffold(
       // App bar
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
         title: Text.rich(
           TextSpan(
