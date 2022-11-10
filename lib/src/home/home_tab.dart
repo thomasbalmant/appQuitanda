@@ -15,6 +15,8 @@ class HomeTab extends StatelessWidget {
     'Cereais',
   ];
 
+  String selectedCategory = 'Frutas';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +113,7 @@ class HomeTab extends StatelessWidget {
               itemBuilder: (_, index) {
                 return CategoryTile(
                   category: categories[index],
-                  isSelected: false,
+                  isSelected: categories[index] == selectedCategory,
                 );
               },
               separatorBuilder: (_, index) => const SizedBox(width: 10),
