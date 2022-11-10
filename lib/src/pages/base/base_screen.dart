@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/pages/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
-  BaseScreen({super.key});
+  const BaseScreen({super.key});
 
   @override
   State<BaseScreen> createState() => _BaseScreenState();
