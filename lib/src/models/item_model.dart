@@ -2,7 +2,7 @@ class ItemModel {
   String itemName;
   String imgUrl;
   String unit;
-  String price;
+  double price;
   String description;
 
   ItemModel({
