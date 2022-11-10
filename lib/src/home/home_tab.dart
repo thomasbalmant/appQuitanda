@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import '../config/custom_colors.dart';
 import 'components/category_tile.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
   HomeTab({super.key});
 
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
   List<String> categories = [
     'Frutas',
     'Legumes',
@@ -106,12 +111,17 @@ class HomeTab extends StatelessWidget {
 
           // Categorias
           Container(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 10),
             height: 40,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
                 return CategoryTile(
+                  onPressed: (() {
+                    setState(() {
+                      selectedCategory = categories[index];
+                    });
+                  }),
                   category: categories[index],
                   isSelected: categories[index] == selectedCategory,
                 );
