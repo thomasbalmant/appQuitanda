@@ -103,7 +103,8 @@ class HomeTab extends StatelessWidget {
           ),
 
           // Categorias
-          SizedBox(
+          Container(
+            padding: const EdgeInsets.only(left: 15),
             height: 40,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
