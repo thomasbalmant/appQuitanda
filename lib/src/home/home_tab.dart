@@ -103,15 +103,19 @@ class HomeTab extends StatelessWidget {
           ),
 
           // Categorias
-          ListView.separated(
-            itemBuilder: (_, index) {
-              return CategoryTile(
-                category: categories[index],
-                isSelected: false,
-              );
-            },
-            separatorBuilder: (_, index) => const SizedBox(width: 10),
-            itemCount: categories.length,
+          SizedBox(
+            height: 40,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) {
+                return CategoryTile(
+                  category: categories[index],
+                  isSelected: false,
+                );
+              },
+              separatorBuilder: (_, index) => const SizedBox(width: 10),
+              itemCount: categories.length,
+            ),
           ),
 
           // Grid
