@@ -2,9 +2,18 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 import '../config/custom_colors.dart';
+import 'components/category_tile.dart';
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+  HomeTab({super.key});
+
+  List<String> categories = [
+    'Frutas',
+    'Legumes',
+    'Verduras',
+    'Temperos',
+    'Cereais',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +100,23 @@ class HomeTab extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+
+          // Categorias
+          ListView.separated(
+            itemBuilder: (_, index) {
+              return CategoryTile(
+                category: categories[index],
+                isSelected: false,
+              );
+            },
+            separatorBuilder: (_, index) => const SizedBox(width: 10),
+            itemCount: categories.length,
+          ),
+
+          // Grid
         ],
       ),
-
-      // Categorias
-
-      // Grid
     );
   }
 }
