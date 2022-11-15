@@ -125,6 +125,10 @@ class _HomeTabState extends State<HomeTab> {
           ),
 
           // Grid
+          GridView.builder(
+            gridDelegate: gridDelegate,
+            itemBuilder: itemBuilder,
+          ),
         ],
       ),
     );
