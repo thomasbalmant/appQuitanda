@@ -137,7 +137,9 @@ class _HomeTabState extends State<HomeTab> {
                   childAspectRatio: 9 / 11.5),
               itemCount: appData.items.length,
               itemBuilder: (_, index) {
-                return const ItemTile();
+                return ItemTile(
+                  item: appData.items[index],
+                );
               },
             ),
           ),
