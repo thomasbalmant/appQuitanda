@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../config/app_data.dart' as appData;
 import '../../config/custom_colors.dart';
 import 'components/category_tile.dart';
+import 'components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -136,9 +137,7 @@ class _HomeTabState extends State<HomeTab> {
                   childAspectRatio: 9 / 11.5),
               itemCount: appData.items.length,
               itemBuilder: (_, index) {
-                return Container(
-                  color: Colors.red,
-                );
+                return const ItemTile();
               },
             ),
           ),
