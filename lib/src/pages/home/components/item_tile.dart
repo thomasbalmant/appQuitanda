@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/models/item_model.dart';
 
+import '../../../config/custom_colors.dart';
+
 class ItemTile extends StatelessWidget {
   final ItemModel item;
 
@@ -14,14 +16,48 @@ class ItemTile extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Column(
-        children: [
-          //IMAGE
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            //IMAGE
+            Expanded(
+              child: Image.asset(item.imgUrl),
+            ),
 
-          //NOME
+            //NOME
+            Text(
+              item.itemName,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
 
-          // PREÇO - UNIDADE
-        ],
+            Row(
+              children: [
+                Text(
+                  item.price.toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: CustomColors.customSwatchColor,
+                  ),
+                ),
+                Text(
+                  '/${item.unit}',
+                  style: TextStyle(
+                    color: Colors.grey.shade500,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                )
+              ],
+            )
+            // PREÇO - UNIDADE
+          ],
+        ),
       ),
     );
   }
