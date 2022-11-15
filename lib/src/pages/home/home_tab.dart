@@ -126,8 +126,17 @@ class _HomeTabState extends State<HomeTab> {
 
           // Grid
           GridView.builder(
-            gridDelegate: gridDelegate,
-            itemBuilder: itemBuilder,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+            ),
+            itemCount: appData.items.length,
+            itemBuilder: (_, index) {
+              return Container(
+                color: Colors.red,
+              );
+            },
           ),
         ],
       ),
