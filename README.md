@@ -1,4 +1,4 @@
-# quitanda_getx
+# App Quitanda
 
 A new Flutter project.
 
