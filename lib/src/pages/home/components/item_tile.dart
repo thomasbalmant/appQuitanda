@@ -37,11 +37,11 @@ class ItemTile extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
+            // PREÇO - UNIDADE
             Row(
               children: [
                 Text(
-                  item.price.toString(),
+                  utilsServices.priceToCurrency(item.price),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -58,7 +58,6 @@ class ItemTile extends StatelessWidget {
                 )
               ],
             )
-            // PREÇO - UNIDADE
           ],
         ),
       ),
