@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/models/item_model.dart';
+import 'package:quitanda_getx/src/services/utils_services.dart';
 
 import '../../../config/custom_colors.dart';
 
 class ItemTile extends StatelessWidget {
   final ItemModel item;
 
-  const ItemTile({super.key, required this.item});
+  ItemTile({super.key, required this.item});
+
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
