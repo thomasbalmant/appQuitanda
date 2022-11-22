@@ -13,54 +13,77 @@ class ItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shadowColor: Colors.grey.shade300,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            //IMAGE
-            Expanded(
-              child: Image.asset(item.imgUrl),
-            ),
-
-            //NOME
-            Text(
-              item.itemName,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            // PREÇO - UNIDADE
-            Row(
+    return Stack(
+      children: [
+        Card(
+          elevation: 5,
+          shadowColor: Colors.grey.shade300,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                //IMAGE
+                Expanded(
+                  child: Image.asset(item.imgUrl),
+                ),
+
+                //NOME
                 Text(
-                  utilsServices.priceToCurrency(item.price),
-                  style: TextStyle(
+                  item.itemName,
+                  style: const TextStyle(
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: CustomColors.customSwatchColor,
                   ),
                 ),
-                Text(
-                  '/${item.unit}',
-                  style: TextStyle(
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
+                // PREÇO - UNIDADE
+                Row(
+                  children: [
+                    Text(
+                      utilsServices.priceToCurrency(item.price),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: CustomColors.customSwatchColor,
+                      ),
+                    ),
+                    Text(
+                      '/${item.unit}',
+                      style: TextStyle(
+                        color: Colors.grey.shade500,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
+            ),
+          ),
         ),
-      ),
+        Positioned(
+          top: 4,
+          right: 4,
+          child: Container(
+            height: 40,
+            width: 35,
+            decoration: BoxDecoration(
+                color: CustomColors.customSwatchColor,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  topRight: Radius.circular(20),
+                )),
+            child: const Icon(
+              Icons.add_shopping_cart_outlined,
+              color: Colors.white,
+              size: 20,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
