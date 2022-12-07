@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/models/item_model.dart';
+import 'package:quitanda_getx/src/services/utils_services.dart';
+
+import '../../config/custom_colors.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductScreen({super.key, required this.item});
 
-  ItemModel item;
+  final ItemModel item;
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +56,17 @@ class ProductScreen extends StatelessWidget {
                         color: Colors.red,
                       )
                     ],
-                  )
+                  ),
 
                   // Preço
+                  Text(
+                    utilsServices.priceToCurrency(item.price),
+                    style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColors.customSwatchColor,
+                    ),
+                  ),
 
                   // Descrição
 
