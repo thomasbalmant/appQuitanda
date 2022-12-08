@@ -82,7 +82,26 @@ class ProductScreen extends StatelessWidget {
                   ),
 
                   // Botão
-                  ElevatedButton(onPressed: () {}, child: Text('Botão'))
+                  SizedBox(
+                    height: 55,
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      onPressed: () {},
+                      label: const Text(
+                        'Add no carrinho',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
