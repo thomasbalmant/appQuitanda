@@ -69,8 +69,20 @@ class ProductScreen extends StatelessWidget {
                   ),
 
                   // Descrição
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          item.description * 10,
+                          style: const TextStyle(height: 1.5),
+                        ),
+                      ),
+                    ),
+                  ),
 
                   // Botão
+                  ElevatedButton(onPressed: () {}, child: Text('Botão'))
                 ],
               ),
             ),
