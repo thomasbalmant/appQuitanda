@@ -20,7 +20,10 @@ class ProductScreen extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                child: Image.asset(item.imgUrl),
+                child: Hero(
+                  tag: item.imgUrl,
+                  child: Image.asset(item.imgUrl),
+                ),
               ),
               Expanded(
                 child: Container(
