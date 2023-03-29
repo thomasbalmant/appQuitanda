@@ -73,7 +73,7 @@ List<String> categories = [
   'Cereais',
 ];
 
-List<CartItemModel> cartItem = [
+List<CartItemModel> cartItems = [
   CartItemModel(item: apple, quantity: 2),
   CartItemModel(item: mango, quantity: 2),
   CartItemModel(item: guava, quantity: 2),
