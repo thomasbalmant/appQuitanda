@@ -5,6 +5,7 @@ class CartItemModel {
   int quantity;
 
   CartItemModel({
-    required this.item, required this.quantity,
-});
+    required this.item,
+    required this.quantity,
+  });
 }
