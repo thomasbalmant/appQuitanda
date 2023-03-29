@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 
 import '../../config/app_data.dart' as appData;
@@ -50,7 +50,7 @@ class _HomeTabState extends State<HomeTab> {
             padding: const EdgeInsets.only(top: 15, right: 15),
             child: GestureDetector(
               onTap: () {},
-              child: Badge(
+              child: badges.Badge(
                 badgeColor: CustomColors.customContrastColor,
                 badgeContent: const Text(
                   '3',
