@@ -66,6 +66,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             ),
                           ),
                           QuantityWidget(
+                            isRemovable: false,
                             suffixText: widget.item.unit,
                             value: cartItemQuantity,
                             result: (quantity) {
