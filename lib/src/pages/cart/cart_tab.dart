@@ -90,7 +90,7 @@ class _CartTabState extends State<CartTab> {
                         )),
                     onPressed: () {},
                     child: const Text(
-                      'Concluir pedido',
+                      'Concluir Pedido',
                       style: TextStyle(
                         fontSize: 18,
                       ),
