@@ -18,9 +18,7 @@ class CartTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16)
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ListTile(
         //Image
         leading: Image.asset(
@@ -50,6 +48,7 @@ class CartTile extends StatelessWidget {
           suffixText: cartItem.item.unit,
           value: cartItem.quantity,
           result: (quantity) {},
+          isRemovable: true,
         ),
       ),
     );
