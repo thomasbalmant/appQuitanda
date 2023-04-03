@@ -12,7 +12,7 @@ class QuantityWidget extends StatelessWidget {
     required this.suffixText,
     required this.value,
     required this.result,
-    required this.isRemovable,
+    this.isRemovable = false,
   });
 
   @override
@@ -35,10 +35,11 @@ class QuantityWidget extends StatelessWidget {
         children: [
           //BOTÃO REMOVER
           _QuantityWidget(
-            icon: !isRemovable ? Icons.remove : Icons.delete_forever,
-            color: Colors.grey,
+            icon:
+                !isRemovable || value > 1 ? Icons.remove : Icons.delete_forever,
+            color: !isRemovable || value > 1 ? Colors.grey : Colors.red,
             onPressed: () {
-              if (value == 1) return;
+              if (value == 1 && !isRemovable) return;
               int resultCount = value - 1;
               result(resultCount);
             },
