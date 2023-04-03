@@ -33,7 +33,7 @@ class QuantityWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          //BOTÃO REMOVER
+          //BOTÃO REMOVER T
           _QuantityWidget(
             icon:
                 !isRemovable || value > 1 ? Icons.remove : Icons.delete_forever,
