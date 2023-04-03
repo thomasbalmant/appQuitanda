@@ -67,7 +67,7 @@ class _CartTabState extends State<CartTab> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'Total geral',
+                  'Total Geral',
                   style: TextStyle(
                     fontSize: 12,
                   ),
