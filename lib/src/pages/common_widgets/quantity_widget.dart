@@ -5,12 +5,14 @@ class QuantityWidget extends StatelessWidget {
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+  final bool isRemovable;
 
   const QuantityWidget({
     super.key,
     required this.suffixText,
     required this.value,
     required this.result,
+    required this.isRemovable,
   });
 
   @override
@@ -33,7 +35,7 @@ class QuantityWidget extends StatelessWidget {
         children: [
           //BOTÃO REMOVER
           _QuantityWidget(
-            icon: Icons.remove,
+            icon: !isRemovable ? Icons.remove : Icons.delete_forever,
             color: Colors.grey,
             onPressed: () {
               if (value == 1) return;
