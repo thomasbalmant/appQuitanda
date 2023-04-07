@@ -88,8 +88,9 @@ class _CartTabState extends State<CartTab> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         )),
-                    onPressed: () {
-                      showOrderConfirmation();
+                    onPressed: () async {
+                      bool? result = await showOrderConfirmation();
+                      print(result);
                     },
                     child: const Text(
                       'Concluir Pedido',
@@ -118,11 +119,15 @@ class _CartTabState extends State<CartTab> {
           content: const Text('Deseja realmente concluir o pedido?'),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
               child: const Text('Não'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
               child: const Text('Sim'),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
