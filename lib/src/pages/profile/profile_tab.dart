@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
+import 'package:quitanda_getx/src/config/app_data.dart' as appData;
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -18,18 +19,53 @@ class ProfileTab extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 32, 16, 16),
         children: [
           // Email
-          CustomTextField(icon: Icons.email, label: 'Email'),
+          CustomTextField(
+            readOnly: true,
+            initialValue: appData.user.email,
+            icon: Icons.email,
+            label: 'Email',
+          ),
 
           // Nome
-          CustomTextField(icon: Icons.person, label: 'Nome'),
+          CustomTextField(
+            readOnly: true,
+            initialValue: appData.user.name,
+            icon: Icons.person,
+            label: 'Nome',
+          ),
 
           // Celular
-          CustomTextField(icon: Icons.phone, label: 'Celular'),
+          CustomTextField(
+            readOnly: true,
+            initialValue: appData.user.phone,
+            icon: Icons.phone,
+            label: 'Celular',
+          ),
 
           // CPF
-          CustomTextField(icon: Icons.file_copy, label: 'CPF', isSecret: true),
+          CustomTextField(
+            readOnly: true,
+            initialValue: appData.user.cpf,
+            icon: Icons.file_copy,
+            label: 'CPF',
+            isSecret: true,
+          ),
 
           // Senha
+          SizedBox(
+            height: 50,
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  side: const BorderSide(
+                    color: Colors.green,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+              child: const Text('Atualizar senha'),
+              onPressed: () {},
+            ),
+          )
         ],
       ),
     );
