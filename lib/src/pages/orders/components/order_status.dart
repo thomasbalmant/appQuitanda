@@ -14,16 +14,35 @@ class OrderStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _StatusDot(
           isActive: true,
           title: 'Teste 1',
         ),
+        const _CustomDivider(),
         _StatusDot(
           isActive: false,
           title: 'Teste 2',
         ),
       ],
+    );
+  }
+}
+
+class _CustomDivider extends StatelessWidget {
+  const _CustomDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 3,
+        horizontal: 8,
+      ),
+      height: 10,
+      width: 2,
+      color: Colors.grey.shade300,
     );
   }
 }
@@ -67,7 +86,13 @@ class _StatusDot extends StatelessWidget {
         const SizedBox(width: 5),
 
         // Texto
-        Expanded(child: Text(title)),
+        Expanded(
+            child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 12,
+          ),
+        )),
       ],
     );
   }
