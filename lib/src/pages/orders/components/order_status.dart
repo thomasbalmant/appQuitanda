@@ -5,7 +5,18 @@ class OrderStatusWidget extends StatelessWidget {
   final String status;
   final bool isOverdue;
 
-  const OrderStatusWidget({
+  final Map<String, int> allStatus = <String, int>{
+    'pending_payment': 0,
+    'refund': 1,
+    'paid': 2,
+    'preparing_purchase': 3,
+    'shipping': 4,
+    'delivered': 5,
+  };
+
+  int get currentStatus => allStatus[status]!;
+
+  OrderStatusWidget({
     super.key,
     required this.isOverdue,
     required this.status,
@@ -16,15 +27,24 @@ class OrderStatusWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _StatusDot(
+        const _StatusDot(
           isActive: true,
-          title: 'Teste 1',
+          title: 'Pedido confirmado',
         ),
         const _CustomDivider(),
-        _StatusDot(
-          isActive: false,
-          title: 'Teste 2',
-        ),
+        if (currentStatus == 1) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pix estornado',
+            backgroundColor: Colors.orange,
+          ),
+        ] else if (isOverdue) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pagemento Pix vencido',
+            backgroundColor: Colors.red,
+          ),
+        ]
       ],
     );
   }
@@ -50,11 +70,13 @@ class _CustomDivider extends StatelessWidget {
 class _StatusDot extends StatelessWidget {
   final bool isActive;
   final String title;
+  final Color? backgroundColor;
 
   const _StatusDot({
     super.key,
     required this.isActive,
     required this.title,
+    this.backgroundColor,
   });
 
   @override
@@ -71,8 +93,9 @@ class _StatusDot extends StatelessWidget {
             border: Border.all(
               color: CustomColors.customSwatchColor,
             ),
-            color:
-                isActive ? CustomColors.customSwatchColor : Colors.transparent,
+            color: isActive
+                ? backgroundColor ?? CustomColors.customSwatchColor
+                : Colors.transparent,
           ),
           child: isActive
               ? const Icon(

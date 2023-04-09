@@ -112,7 +112,7 @@ List<OrderModel> orders = [
       CartItemModel(item: guava, quantity: 1),
     ],
     overdueDateTime: DateTime.parse('2023-05-05 18:00:00.232'),
-    status: 'pending_payment',
+    status: 'refunded',
     total: 11.5,
   ),
 ];
