@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/models/cart_item_model.dart';
 import 'package:quitanda_getx/src/models/order_model.dart';
+import 'package:quitanda_getx/src/pages/orders/components/order_status.dart';
 import 'package:quitanda_getx/src/services/utils_services.dart';
 
 class OrderTile extends StatelessWidget {
@@ -42,6 +43,7 @@ class OrderTile extends StatelessWidget {
               height: 150,
               child: Row(
                 children: [
+                  // Lista de produtos
                   Expanded(
                     flex: 3,
                     child: ListView(
@@ -51,9 +53,17 @@ class OrderTile extends StatelessWidget {
                       }).toList(),
                     ),
                   ),
+                  // Status do pedido
+                  VerticalDivider(
+                    color: Colors.grey.shade300,
+                    thickness: 2,
+                    width: 8,
+                  ),
+
+                  // Status do pedido
                   Expanded(
                     flex: 2,
-                    child: Container(color: Colors.blue),
+                    child: OrderStatusWidget(),
                   )
                 ],
               ),
