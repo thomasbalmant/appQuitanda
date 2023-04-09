@@ -13,20 +13,38 @@ class OrderStatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        _StatusDot(
+          isActive: true,
+          title: 'Teste 1',
+        ),
+        _StatusDot(
+          isActive: false,
+          title: 'Teste 2',
+        ),
+      ],
+    );
   }
 }
 
 class _StatusDot extends StatelessWidget {
   final bool isActive;
+  final String title;
 
-  const _StatusDot({super.key, required this.isActive});
+  const _StatusDot({
+    super.key,
+    required this.isActive,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+        // Dot
         Container(
+          alignment: Alignment.center,
           height: 20,
           width: 20,
           decoration: BoxDecoration(
@@ -37,8 +55,19 @@ class _StatusDot extends StatelessWidget {
             color:
                 isActive ? CustomColors.customSwatchColor : Colors.transparent,
           ),
-          child: isActive ? const Icon(Icons.check) : const SizedBox.shrink(),
+          child: isActive
+              ? const Icon(
+                  Icons.check,
+                  size: 13,
+                  color: Colors.white,
+                )
+              : const SizedBox.shrink(),
         ),
+
+        const SizedBox(width: 5),
+
+        // Texto
+        Expanded(child: Text(title)),
       ],
     );
   }
