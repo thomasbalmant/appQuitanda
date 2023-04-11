@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_getx/src/models/cart_item_model.dart';
 import 'package:quitanda_getx/src/models/order_model.dart';
+import 'package:quitanda_getx/src/pages/common_widgets/payment_dialog.dart';
 import 'package:quitanda_getx/src/pages/orders/components/order_status.dart';
 import 'package:quitanda_getx/src/services/utils_services.dart';
 
@@ -23,6 +24,7 @@ class OrderTile extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          initiallyExpanded: order.status == 'pending_payment',
           title: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,19 +40,23 @@ class OrderTile extends StatelessWidget {
             ],
           ),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: 150,
+            IntrinsicHeight(
               child: Row(
                 children: [
                   // Lista de produtos
                   Expanded(
                     flex: 3,
-                    child: ListView(
-                      children: order.items.map((orderItem) {
-                        return _OrderItemWidget(
-                            utilsServices: utilsServices, orderItem: orderItem);
-                      }).toList(),
+                    child: SizedBox(
+                      height: 150,
+                      child: ListView(
+                        children: order.items.map((orderItem) {
+                          return _OrderItemWidget(
+                              utilsServices: utilsServices,
+                              orderItem: orderItem);
+                        }).toList(),
+                      ),
                     ),
                   ),
                   // Status do pedido
@@ -69,6 +75,43 @@ class OrderTile extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+            ),
+
+            //Total
+            Text.rich(
+              TextSpan(style: const TextStyle(fontSize: 20), children: [
+                const TextSpan(
+                    text: 'Total ',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: utilsServices.priceToCurrency(order.total),
+                )
+              ]),
+            ),
+
+            //Botão Pagamento
+            Visibility(
+              visible: order.status == 'pending_payment',
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20))),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return PaymentDialog(
+                        order: order,
+                      );
+                    },
+                  );
+                },
+                icon: Image.asset(
+                  'assets/app_images/pix.png',
+                  height: 18,
+                ),
+                label: const Text('Ver QR Code Pix'),
               ),
             )
           ],
