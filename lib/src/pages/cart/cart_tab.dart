@@ -21,6 +21,10 @@ class _CartTabState extends State<CartTab> {
     setState(() {
       appData.cartItems.remove(cartItem);
     });
+
+    utilServices.showToast(
+      message: '${cartItem.item.itemName} foi removido(a)',
+    );
   }
 
   double cartTotalPrice() {
@@ -101,6 +105,11 @@ class _CartTabState extends State<CartTab> {
                               order: appData.orders.first,
                             );
                           },
+                        );
+                      } else {
+                        utilServices.showToast(
+                          message: 'Pedido não confirmado',
+                          isError: true,
                         );
                       }
                     },
