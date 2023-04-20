@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quitanda_getx/src/pages/splash/splash_screen.dart';
 
 import 'src/pages/auth/sign_in_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  // Trecho de código que garante que todos os componentes necessários para a ação seguinte já estejam iniciados
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Mais abaixo teremos o método assíncrono que define as possíveis orientações suportadas pelo app.
+  // Nesta lista abaixo você tem todas estas orientações disponíveis:
+  /*
+    * DeviceOrientation.landscapeRight,
+    * DeviceOrientation.landscapeLeft,
+    * DeviceOrientation.portraitUp, 
+    * DeviceOrientation.portraitDown,
+ */
+
+  // Aqui definimos apenas o modo retrato em pé, fazendo com que todo nosso app fique apenas nessa orientação, evitando o overflow
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
