@@ -5,6 +5,8 @@ import 'package:quitanda_getx/src/pages/base/base_screen.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
 import 'package:quitanda_getx/src/config/custom_colors.dart';
 
+import '../common_widgets/app_name_widget.dart';
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
@@ -25,26 +27,9 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //LOGOTIPO
-                    Text.rich(
-                      TextSpan(
-                          style: const TextStyle(
-                            fontSize: 40,
-                          ),
-                          children: [
-                            const TextSpan(
-                              text: 'Green',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'grocery',
-                              style: TextStyle(
-                                color: CustomColors.customContrastColor,
-                              ),
-                            ),
-                          ]),
+                    const AppNameWidget(
+                      greenTitleColor: Colors.white,
+                      textSize: 40,
                     ),
                     //ANIMAÇÃO
                     SizedBox(
