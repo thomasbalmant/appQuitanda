@@ -1,9 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quitanda_getx/src/pages/auth/sign_up_screen.dart';
 import 'package:quitanda_getx/src/pages/base/base_screen.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
 import 'package:quitanda_getx/src/config/custom_colors.dart';
+import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
 
 import '../common_widgets/app_name_widget.dart';
 
@@ -92,10 +94,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(builder: (c) {
-                            return BaseScreen();
-                          }));
+                          Get.offNamed(PagesRoutes.baseRoute);
                         },
                         child: const Text(
                           'Entrar',
@@ -150,11 +149,7 @@ class SignInScreen extends StatelessWidget {
                       height: 50,
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (c) {
-                              return SignUpScreen();
-                            }),
-                          );
+                          Get.toNamed(PagesRoutes.signUpRoute);
                         },
                         // ignore: sort_child_properties_last
                         child: const Text(
