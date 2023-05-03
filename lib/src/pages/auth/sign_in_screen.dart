@@ -1,8 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quitanda_getx/src/pages/auth/sign_up_screen.dart';
-import 'package:quitanda_getx/src/pages/base/base_screen.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
 import 'package:quitanda_getx/src/config/custom_colors.dart';
 import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
@@ -10,7 +8,9 @@ import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
 import '../common_widgets/app_name_widget.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,106 +68,132 @@ class SignInScreen extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(45),
                     )),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // EMAIL
-                    const CustomTextField(
-                      icon: Icons.email,
-                      label: 'Email',
-                    ),
-
-                    // SENHA
-                    const CustomTextField(
-                      isSecret: true,
-                      icon: Icons.lock,
-                      label: 'Senha',
-                    ),
-
-                    // BOTAO ENTRAR
-                    SizedBox(
-                      height: 45,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                        onPressed: () {
-                          Get.offNamed(PagesRoutes.baseRoute);
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // EMAIL
+                      CustomTextField(
+                        icon: Icons.email,
+                        label: 'Email',
+                        validator: (email) {
+                          if (email == null || email.isEmpty) {
+                            return 'Digite seu email!';
+                          }
+                          if (!email.isEmail) {
+                            return 'Digite um Email válido!';
+                          }
+                          return null;
                         },
-                        child: const Text(
-                          'Entrar',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
                       ),
-                    ),
 
-                    // ESQUECEU A SENHA
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Esqueceu a senha?',
-                          style: TextStyle(
-                            color: CustomColors.customContrastColor,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // DIVIDER
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey.withAlpha(90),
-                              thickness: 2,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Text('Ou'),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey.withAlpha(90),
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // BOTAO NOVO USUARIO
-                    SizedBox(
-                      height: 50,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Get.toNamed(PagesRoutes.signUpRoute);
+                      // SENHA
+                      CustomTextField(
+                        isSecret: true,
+                        icon: Icons.lock,
+                        label: 'Senha',
+                        validator: (password) {
+                          if (password == null || password.isEmpty) {
+                            return 'Digite sua senha!';
+                          }
+                          if (password.length < 7) {
+                            return 'Digite uma senha com pelo menos 7 caracteres!';
+                          }
+                          return null;
                         },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Criar Conta',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        style: OutlinedButton.styleFrom(
+                      ),
+
+                      // BOTAO ENTRAR
+                      SizedBox(
+                        height: 45,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18)),
-                            side: const BorderSide(
-                              width: 2,
-                              color: Colors.green,
-                            )),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              return print('Campos validos');
+                            } else {
+                              return print('campos não válidos');
+                            }
+                            // Get.offNamed(PagesRoutes.baseRoute);
+                          },
+                          child: const Text(
+                            'Entrar',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
                       ),
-                    )
-                  ],
+
+                      // ESQUECEU A SENHA
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Esqueceu a senha?',
+                            style: TextStyle(
+                              color: CustomColors.customContrastColor,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // DIVIDER
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey.withAlpha(90),
+                                thickness: 2,
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Text('Ou'),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey.withAlpha(90),
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // BOTAO NOVO USUARIO
+                      SizedBox(
+                        height: 50,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Get.toNamed(PagesRoutes.signUpRoute);
+                          },
+                          // ignore: sort_child_properties_last
+                          child: const Text(
+                            'Criar Conta',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)),
+                              side: const BorderSide(
+                                width: 2,
+                                color: Colors.green,
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
