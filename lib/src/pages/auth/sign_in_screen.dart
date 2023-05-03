@@ -105,7 +105,7 @@ class SignInScreen extends StatelessWidget {
                             return 'Digite sua senha!';
                           }
                           if (password.length < 7) {
-                            return 'Digite uma senha com pelo menos 7 caracteres!';
+                            return 'Digite uma senha com pelo menos 7 caracteres';
                           }
                           return null;
                         },
