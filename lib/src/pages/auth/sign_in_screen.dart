@@ -12,6 +12,10 @@ class SignInScreen extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
+  //Controladores de texto
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -75,6 +79,7 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       // EMAIL
                       CustomTextField(
+                        controller: emailController,
                         icon: Icons.email,
                         label: 'Email',
                         validator: (email) {
@@ -90,6 +95,7 @@ class SignInScreen extends StatelessWidget {
 
                       // SENHA
                       CustomTextField(
+                        controller: passwordController,
                         isSecret: true,
                         icon: Icons.lock,
                         label: 'Senha',
@@ -115,7 +121,9 @@ class SignInScreen extends StatelessWidget {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              return print('Campos validos');
+                              String email = emailController.text;
+                              String password = passwordController.text;
+                              return print(email + '  -  ' + password);
                             } else {
                               return print('campos não válidos');
                             }
