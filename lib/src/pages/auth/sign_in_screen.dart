@@ -133,7 +133,7 @@ class SignInScreen extends StatelessWidget {
                                         authController.Signin(
                                             email: email, password: password);
                                       } else {
-                                        return print('campos não válidos');
+                                        return print('campos inválidos');
                                       }
                                       // Get.offNamed(PagesRoutes.baseRoute);
                                     },
