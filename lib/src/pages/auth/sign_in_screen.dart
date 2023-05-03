@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quitanda_getx/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
 import 'package:quitanda_getx/src/config/custom_colors.dart';
 import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
@@ -113,28 +114,39 @@ class SignInScreen extends StatelessWidget {
                       // BOTAO ENTRAR
                       SizedBox(
                         height: 45,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                          ),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              String email = emailController.text;
-                              String password = passwordController.text;
-                              return print(email + '  -  ' + password);
-                            } else {
-                              return print('campos não válidos');
-                            }
-                            // Get.offNamed(PagesRoutes.baseRoute);
+                        child: GetX<AuthController>(
+                          builder: (authController) {
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                              ),
+                              onPressed: authController.isLoading.value
+                                  ? null
+                                  : () {
+                                      FocusScope.of(context).unfocus();
+                                      if (_formKey.currentState!.validate()) {
+                                        String email = emailController.text;
+                                        String password =
+                                            passwordController.text;
+                                        authController.Signin(
+                                            email: email, password: password);
+                                      } else {
+                                        return print('campos não válidos');
+                                      }
+                                      // Get.offNamed(PagesRoutes.baseRoute);
+                                    },
+                              child: authController.isLoading.value
+                                  ? const CircularProgressIndicator()
+                                  : const Text(
+                                      'Entrar',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                            );
                           },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
                         ),
                       ),
 
