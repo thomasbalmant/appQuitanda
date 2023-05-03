@@ -8,7 +8,7 @@ class AuthController extends GetxController {
     required String password,
   }) async {
     isLoading.value = true;
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     isLoading.value = false;
   }
 }
