@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:quitanda_getx/src/pages/splash/splash_screen.dart';
+import 'package:quitanda_getx/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
-
-import 'src/pages/auth/sign_in_screen.dart';
 
 void main() {
   // Trecho de código que garante que todos os componentes necessários para a ação seguinte já estejam iniciados
@@ -23,6 +21,8 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
+    Get.put(AuthController());
+
     runApp(const MyApp());
   });
 }
