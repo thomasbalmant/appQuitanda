@@ -21,6 +21,10 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
+    // Garante que todos os plugins do app foram iniciados
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // Injeção de dependencia
     Get.put(AuthController());
 
     runApp(const MyApp());

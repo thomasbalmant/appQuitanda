@@ -103,7 +103,7 @@ class SignInScreen extends StatelessWidget {
                           if (password == null || password.isEmpty) {
                             return 'Digite sua senha';
                           }
-                          if (password.length < 7) {
+                          if (password.length < 5) {
                             return 'Digite uma senha com pelo menos 7 caracteres';
                           }
                           return null;

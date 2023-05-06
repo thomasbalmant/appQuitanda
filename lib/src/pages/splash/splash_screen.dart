@@ -5,25 +5,8 @@ import 'package:quitanda_getx/src/pages_routes/app_pages.dart';
 
 import '../../config/custom_colors.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(
-        const Duration(
-          seconds: 2,
-        ), () {
-      Get.offNamed(PagesRoutes.signInRoute);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
