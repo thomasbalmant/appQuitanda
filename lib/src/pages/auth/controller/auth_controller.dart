@@ -72,7 +72,6 @@ class AuthController extends GetxController {
     AuthResult result =
         await authRepository.signIn(email: email, password: password);
     isLoading.value = false;
-
     result.when(
       success: (user) {
         this.user = user;
