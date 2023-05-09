@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:quitanda_getx/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda_getx/src/pages/common_widgets/custom_text_field.dart';
 import 'package:quitanda_getx/src/config/custom_colors.dart';
 import 'package:quitanda_getx/src/services/validators.dart';
@@ -17,6 +19,7 @@ class SignUpScreen extends StatelessWidget {
   );
 
   final _formKey = GlobalKey<FormState>();
+  final authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,21 +64,30 @@ class SignUpScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const CustomTextField(
+                          CustomTextField(
                             icon: Icons.email,
                             label: 'Email',
+                            onSaved: (value) {
+                              authController.user.email = value;
+                            },
                             textInputType: TextInputType.emailAddress,
                             validator: emailValidator,
                           ),
-                          const CustomTextField(
+                          CustomTextField(
                             icon: Icons.lock,
                             label: 'Senha',
+                            onSaved: (value) {
+                              authController.user.password = value;
+                            },
                             isSecret: true,
                             validator: passwordValidator,
                           ),
-                          const CustomTextField(
+                          CustomTextField(
                             icon: Icons.person,
                             label: 'Nome',
+                            onSaved: (value) {
+                              authController.user.name = value;
+                            },
                             validator: nameValidator,
                           ),
                           CustomTextField(
@@ -84,6 +96,9 @@ class SignUpScreen extends StatelessWidget {
                             textInputType: TextInputType.phone,
                             inputFormatters: [phoneFormatter],
                             validator: phoneValidator,
+                            onSaved: (value) {
+                              authController.user.phone = value;
+                            },
                           ),
                           CustomTextField(
                             icon: Icons.file_copy,
@@ -91,26 +106,39 @@ class SignUpScreen extends StatelessWidget {
                             textInputType: TextInputType.number,
                             inputFormatters: [cpfFormatter],
                             validator: cpfValidator,
+                            onSaved: (value) {
+                              authController.user.cpf = value;
+                            },
                           ),
                           SizedBox(
-                            height: 50,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18)),
-                              ),
-                              onPressed: () {
-                                _formKey.currentState!.validate();
-                                // FocusScope.of(context).unfocus();
-                              },
-                              child: const Text(
-                                'Cadastrar usuário',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          )
+                              height: 50,
+                              child: Obx(() {
+                                return ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18)),
+                                  ),
+                                  onPressed: authController.isLoading.value
+                                      ? null
+                                      : () {
+                                          FocusScope.of(context).unfocus();
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            _formKey.currentState!.save();
+                                            authController.signUp();
+                                          }
+                                        },
+                                  child: authController.isLoading.value
+                                      ? const CircularProgressIndicator()
+                                      : const Text(
+                                          'Cadastrar usuário',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                );
+                              }))
                         ],
                       ),
                     ),
